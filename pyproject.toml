@@ -14,12 +14,21 @@ dependencies = [
     "trl>=1.16.0",
 ]
 
+[project.optional-dependencies]
+flash-attn = ["flash-attn==2.8.3", "flash-linear-attention[cuda]", "causal-conv1d"]
+
 [[tool.uv.index]]
 name = "pytorch-cu130"
 url = "https://download.pytorch.org/whl/cu130"
 explicit = true
 
+[[tool.uv.index]]
+name = "astral-cu130"
+url = "https://wheels.astral.sh/simple/cu130/"
+
 [tool.uv.sources]
 torch = { index = "pytorch-cu130" }
 torchvision = { index = "pytorch-cu130" }
 torchaudio = { index = "pytorch-cu130" }
+flash-attn = { url = "https://github.com/mjun0812/flash-attention-prebuild-wheels/releases/download/v0.10.0/flash_attn-2.8.3+cu130torch2.14-cp314-cp314-linux_x86_64.whl" }
+causal-conv1d = { index = "astral-cu130" }
